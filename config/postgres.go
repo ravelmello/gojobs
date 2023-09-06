@@ -18,7 +18,7 @@ func InitializePgsql() (*gorm.DB, error) {
 		return nil, err
 	}
 
-	logger.InfoF("Database connection succeeded: %v", db)
+	logger.InfoF("Database connection succeeded: %+v", db)
 
 	err = db.AutoMigrate(&schemas.Job{})
 

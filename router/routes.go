@@ -6,6 +6,10 @@ import (
 )
 
 func initializeRoutes(router *gin.Engine) {
+
+	logger.Info("Initializing Handler")
+	//handler.InitHandler()
+
 	v1 := router.Group("/api/v1")
 	{
 		v1.GET("/job-opening", jobsHandler.ShowJobHandler)
