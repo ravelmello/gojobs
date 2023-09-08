@@ -37,3 +37,20 @@ func (r *Jobs) Validate() error {
 	}
 	return nil
 }
+
+type UpdateJob struct {
+	Role        string `json:"role"`
+	Company     string `json:"company"`
+	Location    string `json:"location"`
+	Description string `json:"description"`
+	Remote      *bool  `json:"isRemote"`
+	Link        string `json:"link"`
+	Salary      int64  `json:"salary"`
+}
+
+func (r *UpdateJob) Validate() error {
+	if r.Role != "" || r.Link != "" || r.Salary > 0 || r.Company != "" || r.Location != "" || r.Description != "" || r.Remote == nil {
+		return nil
+	}
+	return fmt.Errorf("fields not provided")
+}
