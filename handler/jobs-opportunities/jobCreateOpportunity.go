@@ -2,22 +2,12 @@ package handler
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/ravelmello/gojobs/config"
 	"github.com/ravelmello/gojobs/schemas"
-	"gorm.io/gorm"
 	"net/http"
-)
-
-var (
-	logger *config.Logger
-	db     *gorm.DB
 )
 
 func CreateJobHandler(context *gin.Context) {
 	request := Jobs{}
-	logger = config.GetLogger("Create Job Handler")
-	db = config.GetDatabase()
-
 	logger.InfoF("Starting")
 
 	errorBuild := context.BindJSON(&request)
